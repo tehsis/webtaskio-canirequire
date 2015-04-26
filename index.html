@@ -16,15 +16,15 @@
       }
     </script>
     <script type="text/javascript">
-      var form = document.getElementsByTagName('form')[0];
+      var $form = $('form');
 
-      form.addEventListener('submit', function(e) {
+      $form.on('submit', function(e) {
         e.preventDefault();
         var module_name = document.getElementsByName('module')[0].value;
         $.ajax({
           url: 'https://webtask.it.auth0.com/api/run/wt-tehsis-gmail_com-1?module=' + module_name,
           method: 'POST',
-          data: "      return function(context, cb) {\n          try {\n            require.resolve(context.data.module);\n            cb(null, 'yes');\n          } catch(e) {\n            cb(null, 'nope.');\n          }\n      }",
+          data: $('#myapp').text(),
           headers: {
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6IjIifQ.eyJqdGkiOiJkNDdkM2IzNGQyYjc0YTBkOWNjODA5ODc4ZDcxZDhjZCIsImlhdCI6MTQzMDAwMTg2MCwiY2EiOltdLCJkZCI6MSwidGVuIjoiL153dC10ZWhzaXMtZ21haWxfY29tLVswLTFdJC8ifQ.IUE2hx2O6lks1KpTrHpqFANPBqijr_uvWX_r-CcNj_E'
           },
