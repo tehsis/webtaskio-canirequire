@@ -32,7 +32,7 @@
 		  });
 
       return function(cb) {
-	      cb({
+	      cb(null, {
 		      node_version: process.version,
 		      modules: fs.readdirSync(__dirname + '/node_modules')
 		        .filter(function(dir) {
