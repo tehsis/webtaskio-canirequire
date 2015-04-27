@@ -84,7 +84,7 @@
         }).done(function (data) {
           $('.node-version').text(data.node_version);
           $('.availables').append(data.modules.map(function(package) {
-            return $('<li>').text(package.name + package.version === 'native'?' (native)': ' - ' + package.version);
+            return $('<li>').text(package.name + (package.version === 'native'?' (native)': ' - ' + package.version));
           }));
         }).fail(function (xhr, status, error) {
           alert(error);
