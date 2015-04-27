@@ -83,10 +83,8 @@
         },
         }).done(function (data) {
           $('.node-version').text(data.node_version);
-          $('.availables').append(data.modules.filter(function(package) {
-          	return package.version !== 'native';
-          }).map(function(package) {
-            return $('<li>').text(package.name + ' - ' + package.version);
+          $('.availables').append(data.modules.map(function(package) {
+            return $('<li>').text(package.name + package.version?' - ' + package.version:'');
           }));
         }).fail(function (xhr, status, error) {
           alert(error);
