@@ -34,6 +34,7 @@
 
       $form.on('submit', function(e) {
         e.preventDefault();
+        $(this).attr('disabled', true);
         var module_name = document.getElementsByName('module')[0].value;
         $.ajax({
           url: 'https://webtask.it.auth0.com/api/run/wt-tehsis-gmail_com-1?module=' + module_name,
@@ -47,6 +48,8 @@
             alert(data);
           }).fail(function (xhr, status, error) {
             alert(error);
+          }).always(function() {
+            $(this).attr('disabled', false);
           });
       });
     </script>
