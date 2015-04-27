@@ -1,10 +1,13 @@
 <html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  </head>
   <body>
     <form>
       <fieldset>
       <label for="module">Can I require</label>
       <input type="text" name="module" placeholder="mongodb">?
-      <input type="submit" >
       <div>
       	<h2></h2>Node version: <span class="node-version"></span></h2>
         <h2>Available modules</h2>
@@ -35,7 +38,7 @@
       return function(cb) {
 	      cb(null, {
 		      node_version: process.version,
-		      modules: fs.readdirSync(__dirname + '/node_modules')
+		      modules: natives.concat(fs.readdirSync(__dirname + '/node_modules')
 		        .filter(function(dir) {
 			        return dir[0] !== '.';
 		        })
@@ -43,35 +46,37 @@
 				      var depObj = JSON.parse(fs.readFileSync(__dirname + '/node_modules/' + dep + '/package.json'));
 				      return {
 					      name : depObj.name,
-					      version: depObj.version
+					      version: depObj.version,
+                homepage: depObj.homepage
 				      }
-				    }).concat(natives)
+				    }))
           });
         };
     </script>
     <script type="text/javascript">
-      var $form = $('form');
+      var $search = $('[name=module]');
+      var modules = [];
 
-      $form.on('submit', function(e) {
-        e.preventDefault();
-        $('fieldset').attr('disabled', true);
-        var module_name = document.getElementsByName('module')[0].value;
-        $.ajax({
-          url: 'https://webtask.it.auth0.com/api/run/wt-tehsis-gmail_com-1?module=' + module_name,
-          method: 'POST',
-          data: $('#myapp').text(),
-          headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6IjIifQ.eyJqdGkiOiJkNDdkM2IzNGQyYjc0YTBkOWNjODA5ODc4ZDcxZDhjZCIsImlhdCI6MTQzMDAwMTg2MCwiY2EiOltdLCJkZCI6MSwidGVuIjoiL153dC10ZWhzaXMtZ21haWxfY29tLVswLTFdJC8ifQ.IUE2hx2O6lks1KpTrHpqFANPBqijr_uvWX_r-CcNj_E'
-          },
-          dataType: 'text',
-          }).done(function (data) {
-            alert(data);
-          }).fail(function (xhr, status, error) {
-            alert(error);
-          }).always(function() {
-            $('fieldset').attr('disabled', false);
-          });
+      $search.on('input', function(e) {
+        renderMods(modules, $(this).val().trim());
       });
+
+      function renderMods(data, filter) {
+        $('.availables').html(modules
+          .filter(function(package) {
+            if (!filter) return true;
+            return package.name.indexOf(filter) !== -1;
+          }).map(function(package) {
+            var $link;
+            if ('native' === package.version) {
+              $link = $('<a href="https://nodejs.org/docs/' + data.node_version + '/api/">').text(package.name + '(native)');
+            } else {
+              $link = $('<a href="' + package.homepage + '/tree/v' + package.version + '">').text(package.name + ' - ' + package.version);
+            }
+
+            return $('<li>').html($link);
+        }));
+      }
     </script>
     <script type="text/javascript">
       $.ajax({
@@ -80,12 +85,12 @@
         data: $('#list').text(),
         headers: {
           Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6IjIifQ.eyJqdGkiOiJkNDdkM2IzNGQyYjc0YTBkOWNjODA5ODc4ZDcxZDhjZCIsImlhdCI6MTQzMDAwMTg2MCwiY2EiOltdLCJkZCI6MSwidGVuIjoiL153dC10ZWhzaXMtZ21haWxfY29tLVswLTFdJC8ifQ.IUE2hx2O6lks1KpTrHpqFANPBqijr_uvWX_r-CcNj_E'
-        },
+        }
         }).done(function (data) {
-          $('.node-version').text(data.node_version);
-          $('.availables').append(data.modules.map(function(package) {
-            return $('<li>').text(package.name + (package.version === 'native'?' (native)': ' - ' + package.version));
-          }));
+          var $link = $('<a href="https://nodejs.org/docs/' + data.node_version + '/api/">').text(data.node_version);
+          $('.node-version').html($link);
+          modules = data.modules;
+          renderMods(modules);
         }).fail(function (xhr, status, error) {
           alert(error);
         });
