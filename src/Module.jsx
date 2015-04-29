@@ -2,14 +2,19 @@ import React from "react";
 
 export default class Module extends React.Component {
     render() {
-      let home;
-      let package_url;
+      let home_link;
+      let package_link;
 
-      if (this.props.module.homepage) {
-        home = <a href={this.props.module.homepage}>Homepage</a>;
-        package_url = <a href="https://www.npmjs.com/package/{this.props.module.name}">Package</a>
+      if ('native' === this.props.module.version) {
+        let home_url = `https://nodejs.org/docs/${this.props.node_version}/api/`;
+        home_link = <a href={home_url}>Node {this.props.node_version} Docs</a>
       } else {
-        home = <a href="https://nodejs.org/docs/v{this.props.node_version}/api/">Node {this.props.node_version} Docs</a>
+        if (this.props.module.homepage) {
+          home_link = <a href={this.props.module.homepage}>Homepage</a>;
+        }
+        
+        let package_url = `https://www.npmjs.com/package/${this.props.module.name}`;
+        package_link = <a href={package_url}>Package</a>
       }
 
       return  <div className="col s4">
@@ -21,8 +26,8 @@ export default class Module extends React.Component {
                     </p>
                     </div>
                       <div className="card-action">
-                        {home}
-                        {package_url}
+                        {home_link}
+                        {package_link}
                       </div>
                   </div>
                 </div>;
