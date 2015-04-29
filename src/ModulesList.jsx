@@ -16,10 +16,6 @@ export default class ModulesList extends React.Component {
     };
   }
 
-  updateModules(filter) {
-
-  }
-
   componentDidMount() {
     fetch_modules()
       .done((data) => {
