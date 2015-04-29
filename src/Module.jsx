@@ -7,14 +7,14 @@ export default class Module extends React.Component {
 
       if ('native' === this.props.module.version) {
         let home_url = `https://nodejs.org/docs/${this.props.node_version}/api/`;
-        home_link = <a href={home_url}>Node {this.props.node_version} Docs</a>
+        home_link = <a href={home_url} target="_blank">Node {this.props.node_version} Docs</a>
       } else {
         if (this.props.module.homepage) {
-          home_link = <a href={this.props.module.homepage}>Homepage</a>;
+          home_link = <a href={this.props.module.homepage} target="_blank">Homepage</a>;
         }
-        
+
         let package_url = `https://www.npmjs.com/package/${this.props.module.name}`;
-        package_link = <a href={package_url}>Package</a>
+        package_link = <a href={package_url} target="_blank">Package</a>
       }
 
       return  <div className="col s4">
