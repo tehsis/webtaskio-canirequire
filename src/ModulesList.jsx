@@ -6,21 +6,35 @@ import fetch_modules from './fetch_modules';
 export default class ModulesList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {modules: []};
+    this.state = {
+      filter: '',
+      modules: [],
+      modules_filtered: []
+    };
+  }
+
+  updateModules(filter) {
+
   }
 
   componentDidMount() {
     fetch_modules()
       .done((data) => {
-        console.log('fetch', data);
-        this.setState(data.modules);
+        this.setState({
+          modules: data.modules,
+          modules_filtered: data.modules
+        });
       });
   }
 
   render() {
-    var modules = this.state.modules.map(function(module) {
-      return <Module module={module} />
-    });
+    var modules = this.state.modules_filtered
+      .filter((module) => {
+        return module.name.includes(this.state.filter);
+      })
+      .map((module) => {
+        return <Module key={module.name + module.version} module={module} />
+      });
 
     return <div className="row">{modules}</div>
   }
