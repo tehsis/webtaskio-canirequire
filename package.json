@@ -1,0 +1,52 @@
+{
+  "name": "webtask-canirequire",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tehsis/canirequire.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tehsis/canirequire/issues"
+  },
+  "browserify": {
+    "transform": [
+      "reactify",
+      [
+        "babelify",
+        {
+          "modules": "commonStrict"
+        }
+      ]
+    ]
+  },
+  "homepage": "https://github.com/tehsis/canirequire",
+  "devDependencies": {
+    "babel": "^5.1.13",
+    "babelify": "^6.0.2",
+    "browserify": "^9.0.8",
+    "event-stream": "^3.3.0",
+    "gulp": "^3.8.11",
+    "gulp-connect": "^2.2.0",
+    "gulp-livereload": "^3.8.0",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0",
+    "gulp-util": "^3.0.4",
+    "http-server": "^0.8.0",
+    "jade": "^1.9.2",
+    "jadeify": "^4.2.0",
+    "reactify": "^1.1.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "connect": "^3.3.5",
+    "react": "^0.13.2"
+  }
+}
