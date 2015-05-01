@@ -11,7 +11,6 @@ export default class ModulesList extends React.Component {
       filter: '',
       node_version: '',
       modules: [],
-      modules_filtered: [],
       ready: false
     };
   }
@@ -23,7 +22,6 @@ export default class ModulesList extends React.Component {
           ready: true,
           node_version: data.node_version,
           modules: data.modules,
-          modules_filtered: data.modules
         });
       });
   }
@@ -31,10 +29,13 @@ export default class ModulesList extends React.Component {
   render() {
     if (!this.state.ready) return <Loader />;
 
-    let modules = this.state.modules_filtered
+    let modules = this.state.modules
       .filter(module => module.name.includes(this.state.filter))
       .map(module => <Module key={module.name + module.version} module={module} node_version={this.state.node_version} />);
 
-    return <div className="row">{modules}</div>
+    return <div>
+      <h4 className="white-text">Node Version: {this.state.node_version}</h4> 
+      <div className="row">{modules}</div>
+      </div>
   }
 };
