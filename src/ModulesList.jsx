@@ -35,7 +35,7 @@ export default class ModulesList extends React.Component {
 
     return <div>
       <h4 className="white-text">Node Version: {this.state.node_version}</h4>
-      <h4 className="white-text">Amount: {modules.length}</h4>
+      <h5 className="white-text">Number of modules: {modules.length}</h5>
       <div className="row">{modules}</div>
       </div>
   }
