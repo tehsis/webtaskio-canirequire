@@ -34,7 +34,8 @@ export default class ModulesList extends React.Component {
       .map(module => <Module key={module.name + module.version} module={module} node_version={this.state.node_version} />);
 
     return <div>
-      <h4 className="white-text">Node Version: {this.state.node_version}</h4> 
+      <h4 className="white-text">Node Version: {this.state.node_version}</h4>
+      <h4 className="white-text">Amount: {modules.length}</h4>
       <div className="row">{modules}</div>
       </div>
   }
