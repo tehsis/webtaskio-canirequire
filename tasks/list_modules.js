@@ -17,7 +17,7 @@ return function(cb) {
         var depObj = JSON.parse(fs.readFileSync(__dirname + '/node_modules/' + dep + '/package.json'));
         return {
   	      name : depObj.name,
-  	      version: versions[depObj.name].join(' '),
+  	      version: versions[depObj.name].join(' - '),
           homepage: depObj.homepage
         };
       }))
