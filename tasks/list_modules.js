@@ -18,7 +18,8 @@ return function(cb) {
 
          return prev.concat(versions[depObj.name].map(function(version) {
           return {
-            name : depObj.name + '@' + version,
+            name : depObj.name,
+            version: version,
             homepage: depObj.homepage
           };
         }));
