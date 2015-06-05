@@ -16,7 +16,7 @@ export default class Module extends React.Component {
         }
 
         let package_url = `https://www.npmjs.com/package/${this.props.module.name}`;
-        package_link = <a href={package_url} target="_blank">Package</a>
+        package_link = <a  className="webtask-red-text" href={package_url} target="_blank">Package</a>
 
         require_code = <code>require({"'" + this.props.module.name + "@" + this.props.module.version + "'"})</code>;
       }
