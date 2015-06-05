@@ -12,14 +12,16 @@ return function(cb) {
       .filter(function(dir) {
         return dir[0] !== '.';
       })
-      .map(function(dep) {
+      .reduce(function(prev, dep) {
         var versions = require('verquire').modules;
         var depObj = JSON.parse(fs.readFileSync(__dirname + '/node_modules/' + dep + '/package.json'));
-        return {
-  	      name : depObj.name,
-  	      version: versions[depObj.name].join(' - '),
-          homepage: depObj.homepage
-        };
-      }))
+
+         return prev.concat(versions[depObj.name].map(function(version) {
+          return {
+            name : depObj.name + '@' + version,
+            homepage: depObj.homepage
+          };
+        }));
+      }, []))
     });
 };
