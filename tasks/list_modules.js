@@ -13,10 +13,11 @@ return function(cb) {
         return dir[0] !== '.';
       })
       .map(function(dep) {
+        var versions = require('verquire').modules;
         var depObj = JSON.parse(fs.readFileSync(__dirname + '/node_modules/' + dep + '/package.json'));
         return {
   	      name : depObj.name,
-  	      version: depObj.version,
+  	      version: versions[depObj.name].join(' '),
           homepage: depObj.homepage
         };
       }))
