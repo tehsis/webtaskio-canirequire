@@ -17,6 +17,8 @@ code {
 nav {
   position: fixed;
   z-index: 10;
+  transform: translate(0, -100%);
+  transition: transform 500ms;
 }
 
 .header-input {
@@ -25,36 +27,27 @@ nav {
 
 .sticky-header .header {
   position: fixed;
-  top: 0px;
   z-index: 10;
-  font-size: 25px;
-  padding: 0;
-  margin: 0px;
-  -webkit-animation: slidein 1s;
-  animation: slidein 1s;  
-}
-
-nav {
-  transform: translate(0, -100%);
-  -webkit-transform: translate(0, -100%);
-  transition: transform 200ms;
+  transform: scale(0.5, 0.5) translate(-75%, -225%);
+  transition: transform 500ms;
 }
 
 .sticky-header nav {
   transform: translate(0, 0);
   -webkit-transform: translate(0, 0);
-  transition: transform 200ms;
+  transition: transform 500ms;
+}
+
+.input-main {
+  transition: transform 1s;
 }
 
 .sticky-header .input-main {
   position: fixed;
   z-index: 10;
   top: 0;
-  width: 50%;
-  right: 240px;
-  top: 3px;
-  -webkit-animation: slidein 1s;
-  animation: slidein 1s;
+  transform: scale(0.5, 0.7) translate(-9%, 35%);
+  transition: transform 500ms;
 }
 
 .animated-header-text {

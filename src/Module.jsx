@@ -21,7 +21,7 @@ export default class Module extends React.Component {
         require_code = <code>require({"'" + this.props.module.name + "@" + this.props.module.version + "'"})</code>;
       }
 
-      return  <div className="col s6 m6 l4">
+      return  <div className="col s6 m12 l4">
                 <div className="card white">
                   <div className="card-content">
                     <span className="card-title webtask-red-text">{this.props.module.name}</span>
