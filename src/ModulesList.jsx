@@ -31,7 +31,7 @@ export default class ModulesList extends React.Component {
 
     let modules =
       this.state.modules
-        .filter(module => module.name.includes(this.state.filter))
+        .filter(module => module.name.toLowerCase().includes(this.state.filter.toLowerCase()))
         .map(module => <Module key={module.name + module.version} module={module} node_version={this.state.node_version} />);
 
     return <div className="webtask-red">
