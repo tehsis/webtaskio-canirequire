@@ -2,7 +2,7 @@ import React from 'react';
 
 export default class Loader extends React.Component {
   render() {
-    return <div className="section center">
+    return <div className="section center white">
       <div className="preloader-wrapper big active">
      <div className="spinner-layer spinner-blue">
        <div className="circle-clipper left">

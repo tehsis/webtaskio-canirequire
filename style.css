@@ -23,16 +23,38 @@ nav {
   width: 80%;
 }
 
-.slidedup {
+.sticky-header .header {
+  position: fixed;
+  top: 0px;
+  z-index: 10;
+  font-size: 25px;
+  padding: 0;
+  margin: 0px;
+  -webkit-animation: slidein 1s;
+  animation: slidein 1s;  
+}
+
+nav {
   transform: translate(0, -100%);
   -webkit-transform: translate(0, -100%);
   transition: transform 200ms;
 }
 
-.slideddown {
+.sticky-header nav {
   transform: translate(0, 0);
   -webkit-transform: translate(0, 0);
   transition: transform 200ms;
+}
+
+.sticky-header .input-main {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  width: 50%;
+  right: 240px;
+  top: 3px;
+  -webkit-animation: slidein 1s;
+  animation: slidein 1s;
 }
 
 .animated-header-text {

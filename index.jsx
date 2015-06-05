@@ -8,16 +8,18 @@ $searchInput.on('input', function(e) {
   modulesList.setState({filter: $(this).val()});
 });
 
+let scrollTimeout;
 $(window).on('scroll', function() {
-    if (!isElementInViewport($('#canirequire-search'))) {
-      $('.input-main').val($('.header-input').val());
-      $('nav').removeClass('slidedup').addClass('animate-nav slideddown');
-      $('nav .header-text').addClass('animated-header-text');
-    } else {
-      $('.header-input').val($('.input-main').val());
-      $('nav').addClass('slidedup').removeClass('animate-nav slideddown');
-      $('nav .header-text').removeClass('animated-header-text');
-    }
+    if (scrollTimeout) return;
+    scrollTimeout = setTimeout(function() {
+      if (!isElementInViewport($('#canirequire-search'))) {
+        $('body').addClass('sticky-header');
+      } else {
+        $('body').removeClass('sticky-header');
+      }
+      scrollTimeout = false;
+    }, 500);
+
 });
 
 
