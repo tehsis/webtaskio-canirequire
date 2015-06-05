@@ -13,3 +13,75 @@
 code {
   font-size: 10px;
 }
+
+nav {
+  position: fixed;
+  z-index: 10;
+}
+
+.header-input {
+  width: 80%;
+}
+
+.slidedup {
+  transform: translate(0, -100%);
+  -webkit-transform: translate(0, -100%);
+  transition: transform 200ms;
+}
+
+.slideddown {
+  transform: translate(0, 0);
+  -webkit-transform: translate(0, 0);
+  transition: transform 200ms;
+}
+
+.animated-header-text {
+  -webkit-animation: slidein 1s;
+  animation: slidein 1s;
+}
+
+.animate-nav .animated {
+  -webkit-animation: anim 1s;
+  animation: anim 1s;
+}
+
+@-webkit-keyframes anim {
+  from {
+    -webkit-transform: scale(0, 1);
+  }
+
+  to {
+    -webkit-transform scale(1, 1);
+  }
+
+}
+
+@keyframes anim {
+  from {
+    transform: scale(0, 1);
+  }
+
+  to {
+    transform scale(1, 1);
+  }
+}
+
+@-webkit-keyframes slidein {
+  from {
+    -webkit-transform: translate(100%, 0);
+  }
+
+  to {
+    -webkit-transform: translate(0, 0);
+  }
+}
+
+@keyframes slidein {
+  from {
+    transform: translate(100%, 0);
+  }
+
+  to {
+    transform: translate(0, 0);
+  }
+}
