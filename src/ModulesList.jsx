@@ -29,14 +29,17 @@ export default class ModulesList extends React.Component {
   render() {
     if (!this.state.ready) return <Loader />;
 
-    let modules = this.state.modules
-      .filter(module => module.name.includes(this.state.filter))
-      .map(module => <Module key={module.name + module.version} module={module} node_version={this.state.node_version} />);
+    let modules =
+      this.state.modules
+        .filter(module => module.name.includes(this.state.filter))
+        .map(module => <Module key={module.name + module.version} module={module} node_version={this.state.node_version} />);
 
-    return <div>
-      <h4 className="white-text">Node Version: {this.state.node_version}</h4>
-      <h5 className="white-text">Number of modules: {modules.length}</h5>
-      <div className="row">{modules}</div>
+    return <div className="webtask-red">
+      <div className="section container">
+        <h4 className="white-text">Node Version: {this.state.node_version}</h4>
+        <h5 className="white-text">Number of modules: {modules.length}</h5>
+        <div className="row">{modules}</div>
+        </div>
       </div>
   }
 };

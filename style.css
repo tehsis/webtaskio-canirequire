@@ -1,0 +1,11 @@
+.webtask-red-text {
+  color: #E56E62 !important;
+}
+
+.webtask-red {
+  background-color: #E56E62 !important;
+}
+
+.webtask-red-border, .webtask-red-border:focus {
+  border-color: #E56E62 !important;
+}
