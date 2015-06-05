@@ -10,9 +10,11 @@ $searchInput.on('input', function(e) {
 
 $(window).on('scroll', function() {
     if (!isElementInViewport($('#canirequire-search'))) {
+      $('.input-main').val($('.header-input').val());
       $('nav').removeClass('slidedup').addClass('animate-nav slideddown');
       $('nav .header-text').addClass('animated-header-text');
     } else {
+      $('.header-input').val($('.input-main').val());
       $('nav').addClass('slidedup').removeClass('animate-nav slideddown');
       $('nav .header-text').removeClass('animated-header-text');
     }
