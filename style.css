@@ -17,41 +17,50 @@ code {
 nav {
   position: fixed;
   z-index: 10;
+  -webkit-transform: translate(0, -100%);
   transform: translate(0, -100%);
-  transition: transform 500ms;
+  -webkit-transition: transform 200ms;
+  transition: transform 200ms;
 }
 
 .header-input {
   width: 80%;
 }
 
+.header {
+  -webkit-transition: transform 500ms ease 0s;
+  transition: transform 1s ease 0s;
+}
+
 .sticky-header .header {
   position: fixed;
   z-index: 10;
+  -webkit-transform: scale(0.2, 0.2) translate(-220%, -360%);
   transform: scale(0.2, 0.2) translate(-220%, -360%);
-  transition: transform 500ms ease 0s;
 }
 
 
 @media (min-width: 992px) {
   .sticky-header .header {
+    -webkit-transform: scale(0.5, 0.5) translate(-95%, -225%);
     transform: scale(0.5, 0.5) translate(-95%, -225%);
   }
 }
 
 @media (max-width: 992px) {
   .sticky-header .header {
-    transform: scale(0.5, 0.5) translate(-75%, -225%);
+    -webkit-transform: scale(0.2, 0.2) translate(-215%, -350%);
+    transform: scale(0.2, 0.2) translate(-215%, -350%);
   }
 }
 
 .sticky-header nav {
-  transform: translate(0, 0);
   -webkit-transform: translate(0, 0);
-  transition: transform 500ms;
+  transform: translate(0, 0);
 }
 
 .input-main {
+  -webkit-transition: transform 1s;
   transition: transform 1s;
 }
 
@@ -59,57 +68,6 @@ nav {
   position: fixed;
   z-index: 10;
   top: 0;
+  -webkit-transform: scale(0.5, 0.7) translate(-9%, 35%);
   transform: scale(0.5, 0.7) translate(-9%, 35%);
-  transition: transform 500ms;
-}
-
-.animated-header-text {
-  -webkit-animation: slidein 1s;
-  animation: slidein 1s;
-}
-
-.animate-nav .animated {
-  -webkit-animation: anim 1s;
-  animation: anim 1s;
-}
-
-@-webkit-keyframes anim {
-  from {
-    -webkit-transform: scale(0, 1);
-  }
-
-  to {
-    -webkit-transform scale(1, 1);
-  }
-
-}
-
-@keyframes anim {
-  from {
-    transform: scale(0, 1);
-  }
-
-  to {
-    transform scale(1, 1);
-  }
-}
-
-@-webkit-keyframes slidein {
-  from {
-    -webkit-transform: translate(100%, 0);
-  }
-
-  to {
-    -webkit-transform: translate(0, 0);
-  }
-}
-
-@keyframes slidein {
-  from {
-    transform: translate(100%, 0);
-  }
-
-  to {
-    transform: translate(0, 0);
-  }
 }
