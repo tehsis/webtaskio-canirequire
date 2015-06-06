@@ -63,6 +63,15 @@ nav {
   transform: scale(0.6, 0.6) translate(4%, 19%);
 }
 
+.card {
+  -webkit-transition: -webkit-transform 500ms;
+  transition: transform 500ms;
+}
+.card:hover {
+  -webkit-transform: scale(1.05, 1.05);
+  transform: scale(1.05, 1.05);
+}
+
 
 @media (min-width: 600px) {
   .sticky-header .header {
