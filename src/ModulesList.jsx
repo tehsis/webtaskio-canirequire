@@ -36,8 +36,8 @@ export default class ModulesList extends React.Component {
 
       return <div className="section white">
         <div className="row">
-            <h4 className="col s12 m6 l3 webtask-red-text">Node Version: {this.state.node_version}</h4>
-            <h4 className="col s12 m6 l3 webtask-red-text">Number of modules: {modules.length}</h4>
+            <h4 className="col s12 m6 l6 webtask-red-text">Node Version: {this.state.node_version}</h4>
+            <h4 className="col s12 m6 l6 webtask-red-text">Number of modules: {modules.length}</h4>
         </div>
         <div className="webtask-red">
           <div className="row">{modules}</div>
