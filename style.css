@@ -64,36 +64,6 @@ nav {
 }
 
 
-@media (min-width: 992px) {
-  .sticky-header .header {
-    -webkit-transform: scale(0.5, 0.5) translate(-95%, -225%);
-    transform: scale(0.5, 0.5) translate(-95%, -225%);
-  }
-
-  .sticky-header .input-main {
-    position: fixed;
-    z-index: 10;
-    top: 0;
-    -webkit-transform: scale(0.6, 0.7) translate(2%, 25%);
-    transform: scale(0.6, 0.7) translate(2%, 25%);
-  }
-}
-
-@media (min-width: 992px) {
-  .sticky-header .header {
-    -webkit-transform: scale(0.5, 0.5) translate(-95%, -225%);
-    transform: scale(0.5, 0.5) translate(-95%, -225%);
-  }
-
-  .sticky-header .input-main {
-    position: fixed;
-    z-index: 10;
-    top: 0;
-    -webkit-transform: scale(0.6, 0.7) translate(2%, 25%);
-    transform: scale(0.6, 0.7) translate(2%, 25%);
-  }
-}
-
 @media (min-width: 600px) {
   .sticky-header .header {
     -webkit-transform: scale(0.4, 0.4) translate(-102%, -265%);
@@ -106,5 +76,20 @@ nav {
     top: 0;
     -webkit-transform: scale(0.6, 0.7) translate(7%, 25%);
     transform: scale(0.6, 0.7) translate(7%, 25%);
+  }
+}
+
+@media (min-width: 992px) {
+  .sticky-header .header {
+    -webkit-transform: scale(0.5, 0.5) translate(-95%, -225%);
+    transform: scale(0.5, 0.5) translate(-95%, -225%);
+  }
+
+  .sticky-header .input-main {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    -webkit-transform: scale(0.6, 0.7) translate(2%, 25%);
+    transform: scale(0.6, 0.7) translate(2%, 25%);
   }
 }
