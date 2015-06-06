@@ -34,11 +34,13 @@ export default class ModulesList extends React.Component {
         .filter(module => module.name.toLowerCase().includes(this.state.filter.toLowerCase()))
         .map(module => <Module key={module.name + module.version} module={module} node_version={this.state.node_version} />);
 
-    return <div className="webtask-red">
-      <div className="section container">
-        <h4 className="white-text">Node Version: {this.state.node_version}</h4>
-        <h5 className="white-text">Number of modules: {modules.length}</h5>
-        <div className="row">{modules}</div>
+      return <div className="section white">
+        <div className="row">
+            <h4 className="col s12 m6 l3 webtask-red-text">Node Version: {this.state.node_version}</h4>
+            <h4 className="col s12 m6 l3 webtask-red-text">Number of modules: {modules.length}</h4>
+        </div>
+        <div className="webtask-red">
+          <div className="row">{modules}</div>
         </div>
       </div>
   }

@@ -28,8 +28,21 @@ nav {
 .sticky-header .header {
   position: fixed;
   z-index: 10;
-  transform: scale(0.5, 0.5) translate(-75%, -225%);
-  transition: transform 500ms;
+  transform: scale(0.2, 0.2) translate(-220%, -360%);
+  transition: transform 500ms ease 0s;
+}
+
+
+@media (min-width: 992px) {
+  .sticky-header .header {
+    transform: scale(0.5, 0.5) translate(-95%, -225%);
+  }
+}
+
+@media (max-width: 992px) {
+  .sticky-header .header {
+    transform: scale(0.5, 0.5) translate(-75%, -225%);
+  }
 }
 
 .sticky-header nav {
