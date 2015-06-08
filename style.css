@@ -19,8 +19,6 @@ nav {
   z-index: 10;
   -webkit-transform: translate(0, -100%);
   transform: translate(0, -100%);
-  -webkit-transition: transform 200ms;
-  transition: transform 200ms;
 }
 
 .header-input {
@@ -29,7 +27,6 @@ nav {
 
 .header {
   -webkit-transition: transform 500ms ease 0s;
-  transition: transform 1s ease 0s;
 }
 
 .sticky-header .header {
@@ -47,7 +44,6 @@ nav {
 
 .input-main {
   -webkit-transition: transform 1s;
-  transition: transform 1s;
 }
 
 .sticky-header .header {
