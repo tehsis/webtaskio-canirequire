@@ -25,10 +25,6 @@ nav {
   width: 80%;
 }
 
-.header {
-  -webkit-transition: transform 500ms ease 0s;
-}
-
 .sticky-header .header {
   position: fixed;
   z-index: 10;
@@ -40,10 +36,6 @@ nav {
 .sticky-header nav {
   -webkit-transform: translate(0, 0);
   transform: translate(0, 0);
-}
-
-.input-main {
-  -webkit-transition: transform 1s;
 }
 
 .sticky-header .header {
