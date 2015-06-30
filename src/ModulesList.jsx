@@ -28,6 +28,10 @@ export default class ModulesList extends React.Component {
       });
   }
 
+  filter() {
+    
+  }
+
   loadMore() {
     this.setState({
       limit: this.state.limit + 12
@@ -48,7 +52,7 @@ export default class ModulesList extends React.Component {
 
     let loadMoreButton;
     if (this.state.limit < filter_modules.length) {
-      loadMoreButton = <a className="center btn-floating btn-large waves-effect waves-light red" onClick={this.loadMore}><i className="material-icons">add</i></a>;
+      loadMoreButton = <a className="center btn-floating btn-large waves-effect waves-light red" onClick={this.loadMore}><i className="material-icons">expand_more</i></a>;
     }
 
       return <div className="section white">
