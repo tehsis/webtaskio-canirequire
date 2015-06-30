@@ -24,6 +24,7 @@ export default class ModulesList extends React.Component {
           ready: true,
           node_version: data.node_version,
           modules: data.modules,
+          limit: 12
         });
       });
   }
