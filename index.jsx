@@ -5,7 +5,7 @@ let $searchInput = $('[name=modules-filter]');
 let modulesList = React.render(<ModulesList />, $('#canirequire-modules')[0]);
 
 $searchInput.on('input', function(e) {
-  modulesList.setState({filter: $(this).val()});
+  modulesList.setState({filter: $(this).val(), limit: 12});
 });
 
 let lock = false;
