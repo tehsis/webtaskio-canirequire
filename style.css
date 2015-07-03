@@ -60,6 +60,9 @@ nav {
   transform: scale(1.05, 1.05);
 }
 
+.button-container {
+  padding-bottom: 20px;
+}
 
 @media (min-width: 600px) {
   .sticky-header .header {
