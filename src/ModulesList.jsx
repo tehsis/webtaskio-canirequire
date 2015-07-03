@@ -30,7 +30,7 @@ export default class ModulesList extends React.Component {
   }
 
   filter() {
-    
+
   }
 
   loadMore() {
@@ -53,19 +53,25 @@ export default class ModulesList extends React.Component {
 
     let loadMoreButton;
     if (this.state.limit < filter_modules.length) {
-      loadMoreButton = <a className="center btn-floating btn-large waves-effect waves-light red" onClick={this.loadMore}><i className="material-icons">expand_more</i></a>;
+      loadMoreButton = <a className="center btn-floating btn-large waves-effect waves-light white" onClick={this.loadMore}><i className="material-icons webtask-red-text">expand_more</i></a>;
     }
 
-      return <div className="section white">
-        <div className="row">
+      return <div className="section no-pad-bot">
+        <div className="row white container">
+          <div className="section no-pad-bot">
             <h5 className="col s12 m6 l6 webtask-red-text">Node Version: {this.state.node_version}</h5>
-            <h5 className="col s12 m6 l6 webtask-red-text">Showing: {modules.length} of {filter_modules.length} modules </h5>
+            <div className="right">
+              <h5 className="col s12 m12 l12 webtask-red-text">Showing: {modules.length} of {filter_modules.length} modules </h5>
+            </div>
+          </div>
         </div>
-        <div className="webtask-red">
-          <div className="row">{modules}</div>
-        </div>
-        <div className="center">
-          {loadMoreButton}
+        <div className="webtask-red no-pad-bot">
+          <div className="container">
+            <div className="row">{modules}</div>
+          </div>
+          <div className="center container button-container">
+            {loadMoreButton}
+          </div>
         </div>
       </div>
   }
