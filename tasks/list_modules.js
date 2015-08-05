@@ -16,7 +16,7 @@ return function(cb) {
         var versions = require('verquire').modules;
         var depObj = JSON.parse(fs.readFileSync(__dirname + '/node_modules/' + dep + '/package.json'));
 
-        if (!Array.isArray(versions[depObj.name])) return prev.concat(versions[depObj.name]);
+        if (!Array.isArray(versions[depObj.name])) return prev;
 
         return prev.concat(versions[depObj.name].map(function(version) {
           return {
