@@ -16,13 +16,14 @@ return function(cb) {
         var versions = require('verquire').modules;
         var depObj = JSON.parse(fs.readFileSync(__dirname + '/node_modules/' + dep + '/package.json'));
 
-         return prev.concat(versions[depObj.name].map(function(version) {
+        return prev.concat(versions[depObj.name].map(function(version) {
           return {
             name : depObj.name,
-            version: version,
-            homepage: depObj.homepage
+               version: version,
+               homepage: depObj.homepage
           };
         }));
       }, []))
-    });
+  });
 };
+
