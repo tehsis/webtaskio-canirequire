@@ -5,8 +5,17 @@ let $searchInput = $('[name=modules-filter]');
 let modulesList = React.render(<ModulesList />, $('#canirequire-modules')[0]);
 
 $searchInput.on('input', function(e) {
+  window.location.hash = $(this).val();
   modulesList.setState({filter: $(this).val(), limit: 12});
 });
+
+window.addEventListener('hashchange', function () {
+  $searchInput.val(location.hash.replace('#', ''));
+  modulesList.setState({filter: location.hash.replace('#', ''), limit: 12});
+});
+
+modulesList.setState({filter: location.hash.replace('#', ''), limit: 12});
+$searchInput.val(location.hash.replace('#', ''));
 
 let lock = false;
 $(window).on('scroll', function() {
