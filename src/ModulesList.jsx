@@ -4,6 +4,27 @@ import Module from './Module.jsx';
 
 import fetch_modules from './fetch_modules';
 
+
+function getToken () {
+  try {
+    return GETVal('token');
+  } catch (e) {
+    return null;
+  }
+}
+
+function getUrl () {
+  try {
+    return GETVal('url');
+  } catch (e) {
+    return null;
+  }
+}
+
+function GETVal(key) {
+  return window.location.search.substr(1).split('&').map((val) => val.split("=")).filter((val) => val[0] == key)[0][1];
+}
+
 export default class ModulesList extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +39,7 @@ export default class ModulesList extends React.Component {
   }
 
   componentDidMount() {
-    fetch_modules()
+    fetch_modules(getToken(), getUrl())
       .done((data) => {
         this.setState({
           ready: true,
