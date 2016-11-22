@@ -1,7 +1,6 @@
-'use npm';
 const Fs = require('fs');
-const Verquire = require('verquire');
-const _ = require('lodash@4.8.2');
+const Path = require('path');
+const _ = require('lodash');
 
 const abcsort = function (a, b) {
   if (a.name < b.name) {
@@ -21,17 +20,22 @@ const natives = Object.keys(process.binding("natives"))
     .map(dep => ({name: dep, version: 'native'}))
     .sort(abcsort);
 
+const manifest = require(Path.join(process.env.VERQUIRE_DIR, 'packages.json'));
 
-const modules = _.flatMap(Verquire.modules, (versions, module_name) => {
-   return versions.map((version) => {
-       const moduleObj = {
-         name: module_name,
-         version: version
-       };
 
-       return moduleObj;
-   });
-}).sort(abcsort);
+const modules = _.reduce(manifest, (acc, versions, module_name) => {
+     versions.forEach((version) => {
+         const moduleObj = {
+           name: module_name,
+           version: version
+         };
+  
+         acc.push(moduleObj);
+     });
+     
+     return acc;
+  }, [])
+  .sort(abcsort);
 
 module.exports = cb => {
     cb(null, {
