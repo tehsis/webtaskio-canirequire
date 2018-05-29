@@ -2,12 +2,18 @@ import React from 'react';
 import ModulesList from './src/ModulesList.jsx';
 
 let $searchInput = $('[name=modules-filter]');
+let $tokenInput  = $('[name=wt-token]');
+let $urlInput = $('[name=wt-token]');
 let modulesList = React.render(<ModulesList />, $('#canirequire-modules')[0]);
 
 $searchInput.on('input', function(e) {
   window.location.hash = $(this).val();
-  modulesList.setState({filter: $(this).val(), limit: 12});
+  let self = this;
+  modulesList.setState(function (prev) {
+    return Object.assign({}, prev, {filter: $(self).val(), limit: 12});
+  });
 });
+
 
 window.addEventListener('hashchange', function () {
   $searchInput.val(location.hash.replace('#', ''));

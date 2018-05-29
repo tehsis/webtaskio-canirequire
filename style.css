@@ -32,6 +32,9 @@ nav {
   transform: scale(0.2, 0.2) translate(-220%, -360%);
 }
 
+.sticky-header .hide-sticky {
+  display: none;
+}
 
 .sticky-header nav {
   -webkit-transform: translate(0, 0);

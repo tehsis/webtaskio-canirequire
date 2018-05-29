@@ -38,20 +38,41 @@ export default class ModulesList extends React.Component {
     };
   }
 
-  componentDidMount() {
-    fetch_modules(getToken(), getUrl())
-      .done((data) => {
-        this.setState({
-          ready: true,
-          node_version: data.node_version,
-          modules: data.modules,
-          limit: 12
-        });
+  getModules() {
+    let self = this;
+    let $tokenInput  = $('[name=wt-token]');
+    let $urlInput = $('[name=wt-url]');
+    let url = $urlInput.val();
+    let token = $tokenInput.val();
+
+    fetch_modules(token, url)
+    .done((data) => {
+      self.setState({
+        ready: true,
+        node_version: data.node_version,
+        modules: data.modules,
+        limit: 12
       });
+    }).fail(() => {
+      self.setState({
+        modules: [],
+      });
+    });  
   }
 
-  filter() {
-
+  componentDidMount() {
+    let $tokenInput  = $('[name=wt-token]');
+    let $urlInput = $('[name=wt-url]');
+    // FIXME: Instead of doing this antipatern, url and token should be props.
+    let self = this;
+    self.getModules();
+    $urlInput.on('input', function(e) {
+      self.getModules();
+    })
+    
+    $tokenInput.on('input', function(e) {
+      self.getModules();
+    })
   }
 
   loadMore() {
@@ -61,6 +82,10 @@ export default class ModulesList extends React.Component {
   }
 
   render() {
+    if (this.state.modules.length === 0) 
+    {
+      return <p className="center">Now you can use any node module on Auth0 Webtask! If you are using a private enviroment, fill the specified parameters!</p>;
+    }
     if (!this.state.ready) return <Loader />;
 
     let filter_modules =
